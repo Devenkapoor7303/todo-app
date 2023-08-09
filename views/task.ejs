@@ -1,0 +1,60 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>ToDoApp</title>
+     <link rel="stylesheet" href="/main.css">
+ </head>
+ 
+ <body>
+     <main class="table">
+         <section class="table__header">
+             <h1>Tasks</h1>
+             <div class="input-group">
+                 <input type="search" placeholder="Search Data...">
+             </div>
+             <div class="export__file">
+                 <label for="export-file" class="export__file-btn" title="Export File"></label>
+                 <input type="checkbox" id="export-file">
+                 <div class="export__file-options">
+                    <label>TASK &nbsp; &#10140;</label>
+                    <form action="/task/create" method="GET">
+                        <button><label for="export-file" >CREATE</label></button>
+                    </form>
+                 </div>
+             </div>
+         </section>
+         <section class="table__body">
+             <table>
+                 <thead>
+                     <tr>
+                         <th> Task </th>
+                         <th> Due Date </th>
+                         <th> Status </th>
+                         <th> AssignedTo </th>
+                         <th>Update </th>
+                         <th>Delete </th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <% for(var i=0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].task %></td>
+                            <td><%= data[i].DueDate %></td>
+                            <td><%= data[i].Status %></td>
+                            <td><%= data[i].AssignedTo %></td>
+                            <td><a href="/task/update">Update</a></td>
+                            <td><a href="/task/delete">Delete</a></td>
+                        </tr>
+                     <% } %>
+                 </tbody>
+             </table>
+         </section>
+     </main>
+ </body>
+ 
+ </html>

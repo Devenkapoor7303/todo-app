@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ToDoApp</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Create Task</header>
+      <form action="/task/create" method="POST">
+        <input type="text" placeholder="Enter your task" name="task">
+        <input type="text" placeholder="Enter your DueDate" name="duedate">
+        <input type="text" placeholder="Enter your Status" name="status">
+        <input type="text" placeholder="Enter your AssignedTo" name="email">
+        <button class="button">Create</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
