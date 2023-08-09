@@ -1,7 +1,12 @@
-const nodemailer = require("nodemailer");
+/**
+ * interceptor for user permissions
+ * */
 
+const nodemailer=require("nodemailer");
 
-     async function sendMail(to, subject,text) {
+class MailService {
+
+    static async sendMail(to,subject,text="HI the Task has been assigned to You") {
         try {
             const transporter = nodemailer.createTransport({
                 // Configure your mail transporter (SMTP or other)
@@ -13,8 +18,6 @@ const nodemailer = require("nodemailer");
                 },
                
             });
-
-            // const invitationLink = `http://localhost:3000/invitation/${inviteToken}`;
 
             const mailOptions = {
                 from: "tushrtygi12@gmail.com",
@@ -29,7 +32,7 @@ const nodemailer = require("nodemailer");
         } catch (error) {
             console.error("Error sending email:", error);
         }
-        
     }
+}
 
-exports=module.exports={sendMail}
+exports = module.exports = MailService;

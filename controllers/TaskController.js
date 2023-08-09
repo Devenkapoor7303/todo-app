@@ -43,6 +43,7 @@ exports = module.exports = class TaskController {
     async createTask(req,res){
         const {task,duedate,status,email}=req.body;
         await TaskService.create(task,duedate,status,email);
+        await MailService.sendMail(email,"deven.kapoor1999@gmail.com");
         res.redirect("/task/read");
 
     }
