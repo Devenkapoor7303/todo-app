@@ -25,14 +25,11 @@ class TaskService {
         return task;
     }
 
-    static async update(task,duedate,status,assignedto){
-        const updatedTask=await _db.Task.findOne({task});
-        updatedTask.task=task;
-        updatedTask.DueDate=duedate;
-        updatedTask.Status=status;
-        updatedTask.AssignedTo=assignedto;
-        updatedTask.save();
-        return updatedTask;
+    static async update(id,details){
+        console.log(id,details);
+        const user=await _db.Task.findByIdAndUpdate(id,details);
+        console.log(user);
+        return ;
     }
 
     static async find(){
@@ -40,8 +37,8 @@ class TaskService {
         return tasks;
     }
 
-    static async delete(task,duedate,status,assignedto){
-        await _db.Task.deleteOne({task},{duedate},{status},{assignedto});
+    static async delete(id){
+        await _db.Task.findByIdAndDelete(id);
         return ;
     }
 }

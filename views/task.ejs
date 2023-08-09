@@ -47,8 +47,8 @@
                             <td><%= data[i].DueDate %></td>
                             <td><%= data[i].Status %></td>
                             <td><%= data[i].AssignedTo %></td>
-                            <td><a href="/task/update">Update</a></td>
-                            <td><a href="/task/delete">Delete</a></td>
+                            <td><a href="/task/update/<%=data[i].id%>">Update</a></td>
+                            <td><a href="/task/delete/<%=data[i].id%>">Delete</a></td>
                         </tr>
                      <% } %>
                  </tbody>

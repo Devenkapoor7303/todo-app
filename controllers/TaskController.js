@@ -3,6 +3,7 @@ const basicAuth = require('express-basic-auth');
 const jwt=require("jsonwebtoken");
 const AuthService=require("../services/AuthService");
 const TaskService=require("../services/TaskService");
+const MailService=require("../services/MailService");
 
 
 exports = module.exports = class TaskController {
@@ -12,10 +13,10 @@ exports = module.exports = class TaskController {
         router.use("/task",AuthService.authenticateToken);
         router.get("/task/read",this.showAllTasks);
         router.get("/task/create",this.createTaskFormPage);
-        router.get("/task/update",this.updateTaskFormPage);
-        router.get("/task/delete",this.deleteTaskFormPage);
+        router.get("/task/update/:id",this.updateTaskFormPage);
+        router.get("/task/delete/:id",this.deleteTaskFormPage);
         router.post("/task/create",this.createTask);
-        router.post("/task/update",this.updateTask);
+        router.post("/task/update/:id",this.updateTask);
         log.info('Routed', this.constructor.name);
     }
 
@@ -29,11 +30,14 @@ exports = module.exports = class TaskController {
     }
 
     async updateTaskFormPage(req,res){
-        res.render("updateTask");
+        const id=req.params.id;
+        res.render("updateTask",{id:id});
     }
 
     async deleteTaskFormPage(req,res){
-        await TaskService.delete()
+        const id=req.params.id;
+        await TaskService.delete(id);
+        res.redirect("/task/read");
     }
 
     async createTask(req,res){
@@ -43,8 +47,9 @@ exports = module.exports = class TaskController {
 
     }
     async updateTask(req,res){
-        const {task,duedate,status,email}=req.body;
-        await TaskService.update(task,duedate,status,email);
+        const details=req.body;
+        const id=req.params.id;
+        await TaskService.update(id,details);
         res.redirect("/task/read");
     }
 };

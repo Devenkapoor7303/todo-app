@@ -12,11 +12,11 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Update Task</header>
-      <form action="/task/update" method="POST">
+      <form action="/task/update/<%=id%>" method="POST">
         <input type="text" placeholder="Enter your task" name="task">
-        <input type="text" placeholder="Enter your DueDate" name="duedate">
-        <input type="text" placeholder="Enter your Status" name="status">
-        <input type="text" placeholder="Enter your AssignedTo" name="email">
+        <input type="text" placeholder="Enter your DueDate" name="DueDate">
+        <input type="text" placeholder="Enter your Status" name="Status">
+        <input type="text" placeholder="Enter your AssignedTo" name="AssignedTo">
         <button class="button">Update</button>
       </form>
     </div>
